@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>测试用页面</title>
+		<meta charset="UTF-8">
+		<!--配置文件JS 最优先加载-->
+		<script type="text/javascript" src="../../app_config.js"></script>
+		<!--加载公共Head部分 编译时整体替换-->
+		<link rel="import" href="/lib/app/head.html?__inline">
+		<!--以下为根据需求 进行具体业务 进行自定义加载 公共部分可不用管-->
+		<!--自定义Head部分-->
+		<!--时间选择框组件 需要时才引入-->
+		<link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap-datetimepicker.min.css" />	
+		<script type="text/javascript" src="../../lib/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<!--加载图表组件-->
+		<script type="text/javascript" src="../../lib/echarts/echarts.js"></script>
+		<script type="text/javascript" src="../../lib/echarts/shine.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</head>
+
+	<body>
+		<!--导航栏-->
+		<link rel="import" href="/lib/app/nav.html?__inline">
+		<div id="ik_content" class="ik-content">
+			<div class="col-xs-12 col-md-6">
+				<div class="panel panel-primary" style="margin-top: 15px;">
+					<div class="panel-heading">弹出框Demo</div>
+					<div class="panel-body">
+						<button type="button" class="btn btn-primary" style="margin: 15px;margin-right: 0px;" onclick="ctrl.openEditView()">修改页面</button>
+						<button type="button" class="btn btn-primary" style="margin: 15px;margin-right: 0px;" onclick="ctrl.openDetailView()">详情页面</button>
+						<button type="button" class="btn btn-primary" style="margin: 15px;margin-right: 0px;">修改内容</button>
+						<button type="button" class="btn btn-primary" style="margin: 15px;margin-right: 0px;">修改内容</button>
+					</div>
+				</div>
+			</div>
+			<!--<div class="row">
+				<div class="col-xs-12 col-sm-12" id="main" style="height:400px;"></div>
+				<div class="col-xs-12 col-sm-6" id="main1" style="height:400px;"></div>
+			</div>-->
+			<!--图形界面组件 简易Demo-->
+			<div class="col-xs-12 col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">部分图形组件</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-12 col-sm-6" id="main" style="height:400px;"></div>
+							<div class="col-xs-12 col-sm-6" id="main1" style="height:400px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ik-clearfix"></div>
+		<!-- 模态框（Modal）【修改页面】 -->
+		<div class="modal fade" id="EditView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">
+               				修改页面
+           				</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<form class="form-horizontal ik-edit" role="form">
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容0：</label>
+									<div class="col-sm-4" >
+										<p class="form-control-static">单行正常元素内容</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容1：</label>
+									<div class="col-sm-4" >
+										<input class="form-control" id="focusedInput" type="text" placeholder="请输入内容！（必填）">
+									</div>
+									<label class="control-label col-sm-2">元素内容2：</label>
+									<div class="col-sm-4">
+										<input class="form-control" id="focusedInput" type="text" value="已输入内容">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容3：</label>
+									<div class="col-sm-4">
+										<select class="form-control">
+											<option>全选</option>
+										   	<option>选项1</option>
+										   	<option>选项2</option>
+										   	<option>选项3</option>
+										   	<option>选项4</option>
+										</select>
+									</div>
+									<label class="control-label col-sm-2">元素内容4：</label>
+									<div class="col-sm-4" >
+										<input class="form-control" id="focusedInput" type="text" placeholder="请输入内容！（必填）">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">单选模拟：</label>
+									<div class="col-sm-4">
+										<label class="radio-inline">
+											<input type="radio" name="radio" checked="checked">选择1
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radio">选择2
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radio">选择3
+										</label>
+									</div>
+									<label class="control-label col-sm-2">多选模拟：</label>
+									<div class="col-sm-4">
+										<label class="checkbox-inline">
+											<input type="checkbox" checked="checked">选择1
+										</label>
+										<label class="checkbox-inline">
+											<input type="checkbox">选择2
+										</label>
+										<label class="checkbox-inline">
+											<input type="checkbox">选择3
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容5：</label>
+									<div class="col-sm-4">
+										<input class="form-control" id="focusedInput" type="text" placeholder="请输入内容！（必填）">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容6：</label>
+									<div class="col-sm-4">
+										<select multiple class="form-control">
+										  <option>1</option>
+										  <option>2</option>
+										  <option>3</option>
+										  <option>4</option>
+										  <option>5</option>
+										</select>
+									</div>
+									<label class="control-label col-sm-2">元素内容7：</label>
+									<div class="col-sm-4">
+										<select multiple class="form-control">
+										  <option>1</option>
+										  <option>2</option>
+										  <option>3</option>
+										  <option>4</option>
+										  <option>5</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容8：</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" rows="3"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+					                <label for="dtp_input1" class="control-label col-sm-2">查询时间：</label>
+					                <div class="input-group date form_datetime col-sm-4" data-date-format="yyyy-mm-dd hh:ii">
+					                    <input class="form-control" size="16" type="text" value="">
+										<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+					                </div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">输入成功：</label>
+									<div class="col-sm-4 has-success has-feedback" >
+										<input class="form-control" id="focusedInput" type="text" placeholder="请输入内容!">
+										<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+									</div>
+									<label class="control-label col-sm-2">输入警告：</label>
+									<div class="col-sm-4 has-warning has-feedback ">
+										<input class="form-control" id="focusedInput" type="text" value="已输入内容">
+										<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">输入错误：</label>
+									<div class="col-sm-4 has-error has-feedback ">
+										<input class="form-control" id="focusedInput" type="text" placeholder="请输入内容!">
+										<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+									</div>
+								</div>
+								<div class="form-group has-success has-feedback">
+								  	<label class="control-label col-sm-2" for="inputGroupSuccess1">输入框组：</label>
+								  	<div class="input-group col-sm-4">
+								    	<span class="input-group-addon">@</span>
+								   	 	<input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+								  		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+								  	</div>
+								</div>
+								<div class="form-group has-success has-feedback">
+									<label class="control-label col-sm-2" for="inputSuccess">
+							         	输入成功：
+							      	</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputSuccess">
+										<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">提交</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		</div>
+		<!--  /模态框（Modal）【修改页面】  -->
+		<!-- 模态框（Modal）【详情页面】 -->
+		<div class="modal fade" id="DetailView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">
+               				详情页面
+           				</h4>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<!--<form class="form-horizontal ik-edit" role="form">-->
+							<!--</form>-->
+							<form class="form-horizontal ik-edit" role="form">
+								<div class="form-group">
+									<!--<label class="control-label col-sm-2" style="visibility: hidden;">元素内容1：</label>-->
+									<div class="media col-sm-10">
+										<div class="media-left">
+										    <a href="#">
+										      <img class="media-object" style="width: 100px;" src="../../lib/app/img/p8.jpg" alt="...">
+										    </a>
+									  	</div>
+									  	<div class="media-body">
+									    	<h4 class="media-heading">标题</h4>
+											    描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容
+											   描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容
+											    描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容
+									  	</div>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容1：</label>
+									<div class="col-sm-4" >
+										<p class="form-control-static">单行正常元素内容</p>
+									</div>
+									<label class="control-label col-sm-2">元素内容2：</label>
+									<div class="col-sm-4">
+										<p class="form-control-static">正常元素内容</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容3：</label>
+									<div class="col-sm-10" >
+										<p class="form-control-static">正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容正常元素内容 </p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">元素内容4：</label>
+									<div class="col-sm-10">
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+										<a href="#" class="thumbnail">
+										    <img src="../../lib/app/img/p8.jpg" alt="...">
+										</a>
+									</div>
+								</div>
+							</form>
+							<div class="panel panel-default ik-list">
+								<div class="panel-heading" style="cursor: pointer;" data-toggle="collapse" data-target="#ik_search"><span>XX列表</span><span class="caret" style="margin-left: 5px"></span></div>
+								<div class="panel-body" id="ik_search">
+									<form class="form-inline col-lg-9 ik-search">
+										<div class="form-group">
+											<label for="exampleInput1">查<span class="ik-seize-seat">&emsp;&emsp;</span>询：</label>
+											<input type="text" class="form-control" id="exampleInput1" placeholder="Jane Doe">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput2">查<span class="ik-seize-seat">&nbsp;&nbsp;</span>询<span class="ik-seize-seat">&nbsp;&thinsp;</span>条：</label>
+											<input type="text" class="form-control" id="exampleInput2" placeholder="请输入....">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput3">撒<span class="ik-seize-seat">&emsp;&emsp;</span>黑：</label>
+											<input type="text" class="form-control" id="exampleInput3" placeholder="请输入....">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput4">查询条件：</label>
+											<input type="text" class="form-control" id="exampleInput4" placeholder="请输入....">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput5">查询条件：</label>
+											<input type="text" class="form-control" id="exampleInput5" placeholder="请输入....">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput6">查询条件：</label>
+											<input type="text" class="form-control" id="exampleInput6" placeholder="请输入....">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput7">查询条件：</label>
+											<input type="text" class="form-control" id="exampleInput7" placeholder="请输入....">
+										</div>
+										<br class="hidden-xs"/>
+										<div class="form-group">
+											<label for="exampleInput8">查询条件：</label>
+											<input type="text" class="form-control" id="exampleInput8" placeholder="请输入....">
+										</div>
+										<div class="form-group">
+											<label for="exampleInput9">下拉菜单：</label>
+											<select class="form-control">
+												<option value="1">选项1</option>
+												<option value="2">选项2</option>
+												<option value="3">选项3</option>
+												<option value="4">选项4</option>
+												<option value="5">选项5</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label style="visibility: visible;">单选模拟：</label>
+											<label class="radio-inline">
+														<input type="radio" name="radio">选择1
+													</label>
+											<label class="radio-inline">
+														<input type="radio" name="radio">选择2
+													</label>
+											<label class="radio-inline">
+														<input type="radio" name="radio">选择3
+													</label>
+										</div>
+										<br class="hidden-xs" />
+										<div class="form-group">
+											<label style="visibility: visible;">多选模拟：</label>
+											<label class="checkbox-inline">
+												<input type="checkbox">选择1
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox">选择2
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox">选择3
+											</label>
+										</div>
+										<br class="hidden-xs" />
+										<button type="submit" class="btn btn-default">查询</button>
+										<button type="submit" class="btn btn-default">清除</button>
+									</form>
+								</div>
+								<!--</div>-->
+								<div class="panel-footer">
+									<button type="submit" class="btn btn-default">导出Excle</button>
+									<button type="submit" class="btn btn-default">导出全部</button>
+									<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">新增</button>
+								</div>
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover">
+										<thead>
+											<th>类名</th>
+											<th>描述</th>
+											<th>列名1</th>
+											<th>列名2</th>
+										</thead>
+										<tr>
+											<td>asdasd</td>
+											<td>asdasd</td>
+											<td>啊时代发生的发生的发</td>
+											<td>asdasd</td>
+										</tr>
+										<tr>
+											<td>啊时代发生的发生的发</td>
+											<td>啊时代发生的发生的发</td>
+											<td>啊时代发生的发生的发</td>
+											<td>asdasd</td>
+										</tr>
+										<tr>
+											<td>啊时代发生的发生的发啊时代发生的发生的发啊时代发生的发生的发</td>
+											<td>asdasd</td>
+											<td>asdasd</td>
+											<td>asdasd</td>
+										</tr>
+										<tr>
+											<td>asdasd</td>
+											<td>啊时代发生的发生的发</td>
+											<td>asdasd</td>
+											<td>asdasd</td>
+										</tr>
+										<tr class="active">
+											<td>.active</td>
+											<td>表示当前活动的信息</td>
+											<td>.danger</td>
+											<td>表示危险或者可能是错误的行为</td>
+										</tr>
+										<tr class="success">
+											<td>.success</td>
+											<td>表示成功或者正确的行为</td>
+											<td>.danger</td>
+											<td>表示危险或者可能是错误的行为</td>
+										</tr>
+										<tr class="info">
+											<td>.info</td>
+											<td>表示中立的信息或行为</td>
+											<td>.danger</td>
+											<td>表示危险或者可能是错误的行为</td>
+										</tr>
+										<tr class="warning">
+											<td>.warning</td>
+											<td>表示警告，需要特别注意</td>
+											<td>.danger</td>
+											<td>表示危险或者可能是错误的行为</td>
+										</tr>
+										<tr class="danger">
+											<td>.danger</td>
+											<td>表示危险或者可能是错误的行为</td>
+											<td>.danger</td>
+											<td>表示危险或者可能是错误的行为</td>
+										</tr>
+									</table>
+								</div>
+								<div class="panel-footer ik-pagination">
+									<div class="ik-pagination-info">第<span>1</span>/共<span>1</span>页，本页
+										<select class="form-control" style="width:75px;height: 32px;padding: 0px 12px;display: inline-block;">
+											<option>10</option>
+											<option selected="selected">20</option>
+											<option>30</option>
+											<option>50</option>
+											<option>100</option>
+										</select>
+										行/共<span>1</span>行
+									</div>
+									<div class="btn-group ik-pagination-btns" role="group" aria-label="分页">
+										<button type="button" class="btn btn-default">首页</button>
+										<button type="button" class="btn btn-default">上一页</button>
+										<button type="button" class="btn btn-default">下一页</button>
+										<button type="button" class="btn btn-default">尾页</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">提交</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		</div>
+		<!-- / 模态框（Modal）【详情页面】 -->
+		<script>
+			var ctrl=require("/modules/demo/index");
+//			ctrl.openEditView();
+//			openDetailView();
+		</script>
+	</body>
+</html>

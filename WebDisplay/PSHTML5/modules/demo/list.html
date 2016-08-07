@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>测试用页面</title>
+		<meta charset="UTF-8">
+		<!--配置文件JS 最优先加载-->
+		<script type="text/javascript" src="../../app_config.js"></script>
+		<!--加载公共Head部分 编译时整体替换-->
+		<link rel="import" href="/lib/app/head.html?__inline">
+		<!--自定义Head部分-->
+	</head>
+	<body>
+		<!--导航栏-->
+		<link rel="import" href="/lib/app/nav.html?__inline">
+		<div id="ik_content" class="ik-content">
+			<div class="panel panel-default ik-list">
+				<div class="panel-heading" style="cursor: pointer;" data-toggle="collapse" data-target="#ik_search"><span>XX列表</span><span class="caret" style="margin-left: 5px"></span></div>
+				<div class="panel-body" id="ik_search">
+					<form class="form-inline col-lg-9 ik-search">
+						<div class="form-group">
+							<label for="exampleInput1">查<span class="ik-seize-seat">&emsp;&emsp;</span>询：</label>
+							<input type="text" class="form-control" id="exampleInput1" placeholder="Jane Doe">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput2">查<span class="ik-seize-seat">&nbsp;&nbsp;</span>询<span class="ik-seize-seat">&nbsp;&thinsp;</span>条：</label>
+							<input type="text" class="form-control" id="exampleInput2" placeholder="请输入....">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput3">撒<span class="ik-seize-seat">&emsp;&emsp;</span>黑：</label>
+							<input type="text" class="form-control" id="exampleInput3" placeholder="请输入....">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput4">查询条件：</label>
+							<input type="text" class="form-control" id="exampleInput4" placeholder="请输入....">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput5">查询条件：</label>
+							<input type="text" class="form-control" id="exampleInput5" placeholder="请输入....">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput6">查询条件：</label>
+							<input type="text" class="form-control" id="exampleInput6" placeholder="请输入....">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput7">查询条件：</label>
+							<input type="text" class="form-control" id="exampleInput7" placeholder="请输入....">
+						</div>
+						</br>
+						<div class="form-group">
+							<label for="exampleInput8">查询条件：</label>
+							<input type="text" class="form-control" id="exampleInput8" placeholder="请输入....">
+						</div>
+						<div class="form-group">
+							<label for="exampleInput9">下拉菜单：</label>
+							<select class="form-control">
+								<option value="1">选项1</option>
+								<option value="2">选项2</option>
+								<option value="3">选项3</option>
+								<option value="4">选项4</option>
+								<option value="5">选项5</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+							<div class="input-group">
+								<div class="input-group-addon">￥</div>
+								<input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入金额">
+								<div class="input-group-addon">.00</div>
+							</div>
+						</div>
+						</br>
+						<div class="form-group">
+							<label style="visibility: visible;">单选模拟：</label>
+							<label class="radio-inline">
+										<input type="radio" name="radio">选择1
+									</label>
+							<label class="radio-inline">
+										<input type="radio" name="radio">选择2
+									</label>
+							<label class="radio-inline">
+										<input type="radio" name="radio">选择3
+									</label>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label style="visibility: visible;">多选模拟：</label>
+							<label class="checkbox-inline">
+										<input type="checkbox">选择1
+									</label>
+							<label class="checkbox-inline">
+										<input type="checkbox">选择2
+									</label>
+							<label class="checkbox-inline">
+										<input type="checkbox">选择3
+									</label>
+						</div>
+						<br />
+						<button type="submit" class="btn btn-default">查询</button>
+						<button type="submit" class="btn btn-default">清除</button>
+					</form>
+				</div>
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-default">导出Excle</button>
+					<button type="submit" class="btn btn-default">导出全部</button>
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">新增</button>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<th>类名</th>
+							<th>描述</th>
+							<th>列名1</th>
+							<th>列名2</th>
+						</thead>
+						<tr>
+							<td>asdasd</td>
+							<td>asdasd</td>
+							<td>啊时代发生的发生的发</td>
+							<td>asdasd</td>
+						</tr>
+						<tr>
+							<td>啊时代发生的发生的发</td>
+							<td>啊时代发生的发生的发</td>
+							<td>啊时代发生的发生的发</td>
+							<td>asdasd</td>
+						</tr>
+						<tr>
+							<td>啊时代发生的发生的发啊时代发生的发生的发啊时代发生的发生的发</td>
+							<td>asdasd</td>
+							<td>asdasd</td>
+							<td>asdasd</td>
+						</tr>
+						<tr>
+							<td>asdasd</td>
+							<td>啊时代发生的发生的发</td>
+							<td>asdasd</td>
+							<td>asdasd</td>
+						</tr>
+						<tr class="active">
+							<td>.active</td>
+							<td>表示当前活动的信息</td>
+							<td>.danger</td>
+							<td>表示危险或者可能是错误的行为</td>
+						</tr>
+						<tr class="success">
+							<td>.success</td>
+							<td>表示成功或者正确的行为</td>
+							<td>.danger</td>
+							<td>表示危险或者可能是错误的行为</td>
+						</tr>
+						<tr class="info">
+							<td>.info</td>
+							<td>表示中立的信息或行为</td>
+							<td>.danger</td>
+							<td>表示危险或者可能是错误的行为</td>
+						</tr>
+						<tr class="warning">
+							<td>.warning</td>
+							<td>表示警告，需要特别注意</td>
+							<td>.danger</td>
+							<td>表示危险或者可能是错误的行为</td>
+						</tr>
+						<tr class="danger">
+							<td>.danger</td>
+							<td>表示危险或者可能是错误的行为</td>
+							<td>.danger</td>
+							<td>表示危险或者可能是错误的行为</td>
+						</tr>
+					</table>
+				</div>
+				<div class="panel-footer ik-pagination">
+					<div class="ik-pagination-info">第<span>1</span>/共<span>1</span>页，本页
+						<select class="form-control" style="width:75px;height: 32px;padding: 0px 12px;display: inline-block;">
+							<option>10</option>
+							<option selected="selected">20</option>
+							<option>30</option>
+							<option>50</option>
+							<option>100</option>
+						</select>
+						行/共<span>1</span>行
+					</div>
+					<div class="btn-group ik-pagination-btns" role="group" aria-label="分页">
+						<button type="button" class="btn btn-default">首页</button>
+						<button type="button" class="btn btn-default">上一页</button>
+						<button type="button" class="btn btn-default">下一页</button>
+						<button type="button" class="btn btn-default">尾页</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ik-clearfix"></div>
+		<script>
+			$("#myModal").modal({
+				backdrop:'static'
+			})
+		</script>
+	</body>
+</html>

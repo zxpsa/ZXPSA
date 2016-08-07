@@ -1,0 +1,98 @@
+<!--<meta charset="UTF-8">-->
+<div class="navbar navbar-inverse ik-navbar" role="navigation" id="ik_nav">
+	<!--头部导航栏[简略部分]-->
+	<div class="navbar-header" style="text-align: center;">
+		<a href="javascript:;" type="button" class="navbar-toggle nav-l-toggle nav-toggle-btn" aria-expanded="false" onclick="$App.showOrHideAsideMenue()">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="glyphicon glyphicon-menu-hamburger" style="font-size: 20px;"></span>
+		</a>
+		<a href="index.html" class="navbar-brand">
+			<!--<i class="glyphicon glyphicon-console"></i>-->
+			<span>多平台业务支撑</span>
+		</a>
+		<a href="javascript:;" type="button" class="navbar-toggle  nav-toggle-btn" data-toggle="collapse" data-target="#ik_nav_right">
+			<span class="sr-only">&nbsp;</span>
+			<span class="glyphicon glyphicon-cog" style="font-size: 20px;"></span>
+		</a>
+	</div>
+	<!--头部导航栏[具体导航部分]-->
+	<div class="collapse navbar-collapse" id="ik_nav_right">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span>&nbsp;
+					<span class="ik-user-img">
+						<img src="/PSHTML5/lib/app/img/p8.jpg">
+					</span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#">用户资料</a>
+					</li>
+					<li>
+						<a href="#">修改密码</a>
+					</li>
+					<li role="separator" class="divider"></li>
+					<li>
+						<a href="#">退出登录</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<div id="ik_aside_menue" class="ik-aside-menue">
+	<ul class="nav nav-list">
+		<li v-for="item in list" v-bind:class="item.rowClass">
+			<template v-if="item.html">
+				{{{item.html}}}
+			</template>
+			<template v-if="!item.html">
+			<a v-bind:class="{'dropdown-toggle':item.submenu}" v-bind:href="item.link">
+				<i class=""  v-bind:class="item.iconClass"></i>
+				<span class="menu-text" v-text="item.name"></span>
+				<b class="arrow glyphicon glyphicon-menu-down" v-if="item.submenu"></b>
+			</a>
+
+			<ul class="submenu">
+				<li v-for="item0 in item.submenu" v-bind:class="item0.rowClass">
+					<template v-if="item0.html">
+						{{{item0.html}}}
+					</template>
+					<template v-if="!item0.html">
+					<a href="#" v-bind:class="{'dropdown-toggle':item0.submenu}">
+						<i class="glyphicon glyphicon-th-large"></i> {{item0.name}}
+						<b class="arrow glyphicon glyphicon-menu-down" v-if="item0.submenu"></b>
+					</a>
+					<ul class="submenu" v-if="!item0.html">
+						<li v-for="item1 in item0.submenu" v-bind:class="item1.rowClass">
+							<template v-if="item1.html">
+								{{{item1.html}}}
+							</template>
+							<template v-if="!item1.html">
+							<a href="#" v-bind:class="{'dropdown-toggle':item1.submenu}">
+								<i class="icon-pencil"></i> {{item1.name}}
+								<b class="arrow glyphicon glyphicon-menu-down" v-if="item1.submenu"></b>
+							</a>
+							<ul class="submenu" v-if="!item1.html">
+								<li v-for="item2 in item1.submenu" v-bind:class="item2.rowClass">
+									<a href="#">
+										<i class="icon-plus"></i> {{item2.name}}
+									</a>
+								</li>
+							</ul>
+							</template>
+						</li>
+					</ul>
+					</template>
+				</li>
+			</ul>			
+			</template>
+		</li>
+
+		<li class="hidden-xs">
+			<a href="javascript:;" style="text-align: center;" id="ik_folded">
+				<span class="glyphicon glyphicon-chevron-left" id="ik_folded0"></span>
+			</a>
+		</li>
+	</ul>
+</div>
